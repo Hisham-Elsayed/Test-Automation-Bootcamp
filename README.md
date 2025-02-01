@@ -1,1 +1,1 @@
-This repository will contain Test Automation Bootcamp levels
+This repository contains Test Automation Bootcamp levels
