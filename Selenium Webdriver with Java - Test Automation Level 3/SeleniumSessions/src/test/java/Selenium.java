@@ -1,25 +1,46 @@
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WindowType;
+import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
+
+import java.util.List;
 
 public class Selenium {
 
     public static WebDriver driver = new EdgeDriver();
 
     public static void main(String[] args) {
-        openBrowser("https://the-internet.herokuapp.com/login");
+       // openBrowser("https://the-internet.herokuapp.com/login");
+        openBrowser("https://the-internet.herokuapp.com/tables");
+        By element = By.xpath("//table[@id='table2'] /tbody /tr");
+        List<WebElement> elements = driver.findElements(element);
+        for(WebElement element1 :elements)
+            System.out.println(element1.getText());
+
 //        openBrowserUsingNavigation("https://www.google.com");
 //        back();     //the internet
 //        next();     //google
         manageWindow();
-        getCurrentUrlOfThePage();
-        printTitleOfThePage();
-       // getSourceCode();
-        getWindowId();
-        closeBrowser();
-        quitBrowser();
+
+//        By usernameInput = By.id("username");
+//        driver.findElement(usernameInput).click();
+//        driver.findElement(usernameInput).sendKeys("");
+//        driver.findElement(usernameInput).clear();
+//        byToWebElement(usernameInput);
+
+
+
+        //Using cssSelector
+//        By usernameInput = By.cssSelector("#username");
+
+        //Using XPath
+       // By usernameInput = By.xpath("");
+
+        //By Link Text
+       // By usernameInput = By.linkText("Elemental Selenium");
+    }
+
+    public static WebElement byToWebElement(By locator)
+    {
+        return driver.findElement(locator);
     }
 
     //Get Method
@@ -49,8 +70,8 @@ public class Selenium {
     //Managing Methods
     public static void manageWindow()
     {
-        Dimension dimension = new Dimension(430,932);
-        driver.manage().window().maximize();
+//        Dimension dimension = new Dimension(430,932);
+          driver.manage().window().maximize();
 //        driver.manage().window().fullscreen();
 //        driver.manage().window().minimize();
 //        driver.manage().window().setSize(new Dimension(430,932));   //Set Dimension to iPhone 14 pro max
