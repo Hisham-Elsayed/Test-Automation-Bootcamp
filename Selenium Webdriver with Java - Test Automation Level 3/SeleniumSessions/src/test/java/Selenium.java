@@ -1,9 +1,24 @@
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
+import javax.swing.*;
+import javax.swing.plaf.FileChooserUI;
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
@@ -17,7 +32,7 @@ public class Selenium {
     public static String firstTab;
     public static String secondTab;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, URISyntaxException {
         /** Take action on elements **/
 //        openBrowser("https://the-internet.herokuapp.com/login");
 //        manageWindow();     //maximize
@@ -84,12 +99,187 @@ public class Selenium {
 //        System.out.println(driver.getCurrentUrl());
 
         /** Frames **/
-        openBrowser("https://the-internet.herokuapp.com/nested_frames");
+//        openBrowser("https://the-internet.herokuapp.com/nested_frames");
+//        manageWindow();
+//        //iFrame();
+//        nestedFrame();
+
+        /** Alerts **/
+//        openBrowser("https://the-internet.herokuapp.com/javascript_alerts");
+//        manageWindow();
+//        acceptAlert();
+//        dismissAlert();
+//        prompt();
+
+        /** Using Keys **/
+//        openBrowser("https://the-internet.herokuapp.com/key_presses");
+//        manageWindow();
+//        keyUsingSendKeys();
+//        keysUsingActions();
+
+        /** Scrolling **/
+//        openBrowser("file:///F:/index.html");
+//        manageWindow();
+//        scrollingUsingActions();
+
+        /** Taking Screenshots **/
+//        openBrowser("https://the-internet.herokuapp.com/login");
+//        manageWindow();
+//
+//        try {
+//            takingScreenshot("UsernameField");
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+
+        /** Upload Files **/
+//        openBrowser("https://the-internet.herokuapp.com/upload");
+//        manageWindow();
+//        uploadUsingSendKeys("C:\\Hisham\\The New Tester Program\\Test Automation Bootcamp\\Selenium Webdriver with Java - Test Automation Level 3\\SeleniumSessions\\src\\main\\resources\\screenshot1.png");
+
+        /** Browser Options **/
+//        initializeDriver();
+//        openBrowser("https://the-internet.herokuapp.com/upload");
+//        manageWindow();
+//        System.out.println(driver.getCurrentUrl());
+
+        /** Checking Broken links and images **/
+//        openBrowser("https://the-internet.herokuapp.com/");
+        openBrowser("https://the-internet.herokuapp.com/broken_images");
         manageWindow();
-        //iFrame();
-        nestedFrame();
+//        List<WebElement> elements = driver.findElements(By.tagName("a"));
+        List<WebElement> elements = driver.findElements(By.tagName("img"));
+//        checkBroken(elements,"links");
+//        checkBroken(elements,"photo");
+        checkBrokenUsingRestAssured(elements,"photo");
 
+    }
 
+    public static void checkBrokenUsingRestAssured(List<WebElement> elements,String type) throws IOException, URISyntaxException {
+        URL url;
+        String attribute;
+
+        if(type.equals("photo"))
+            attribute = "src";
+        else
+            attribute = "href";
+
+        for(WebElement element:elements)
+        {
+            url = new URI(element.getAttribute(attribute)).toURL();
+            Response response = RestAssured.given().get(url);
+            System.out.println(response.getStatusLine());
+        }
+    }
+
+    public static void checkBroken(List<WebElement> elements,String type) throws IOException, URISyntaxException {
+        URL url;
+        String attribute;
+
+        if(type.equals("photo"))
+            attribute = "src";
+        else
+            attribute = "href";
+
+        for(WebElement element:elements)
+        {
+            url = new URI(element.getAttribute(attribute)).toURL();
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            System.out.println(httpURLConnection.getResponseMessage() + " " + httpURLConnection.getResponseCode());
+        }
+    }
+
+    public static void initializeDriver()
+    {
+        EdgeOptions edgeOptions = new EdgeOptions();
+        edgeOptions.addArguments("--guest");                    //Guest Mode
+//        edgeOptions.addArguments("--headless");               //No UI
+        edgeOptions.addArguments("--start-maximized");          //Start Browser Maximized
+        driver = new EdgeDriver(edgeOptions);
+    }
+
+    public static void uploadUsingRobot(String path) throws AWTException {
+        driver.findElement(By.id("chooseFileBtn")).click();
+        StringSelection stringSelection = new StringSelection(path);        //CTRL + C
+        Toolkit.getDefaultToolkit().getSystemSelection().setContents(stringSelection,null);
+        Robot robot = new Robot();
+
+        robot.delay(2000);
+
+        // ENTER
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.delay(2000);
+
+        // CTRL + V
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+
+        robot.delay(2000);
+
+        // ENTER
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+    }
+
+    public static void uploadUsingSendKeys(String path)
+    {
+        driver.findElement(By.id("file-upload")).sendKeys(path);
+    }
+
+    public static void takingScreenshot(String imageName) throws IOException {
+        String path = "C:\\Hisham\\The New Tester Program\\Test Automation Bootcamp\\Selenium Webdriver with Java - Test Automation Level 3\\SeleniumSessions\\src\\main\\resources\\";
+        File src = (byToWebElement(By.id("username"))).getScreenshotAs(OutputType.FILE);
+        File target = new File(path + imageName +".png");
+        FileUtils.copyFile(src,target);
+    }
+
+    public static void scrollingUsingActions()
+    {
+        new Actions(driver).scrollToElement(byToWebElement(By.id("scroll_text")))
+                .perform();
+        driver.findElement(By.id("scroll_text")).sendKeys("test");
+    }
+
+    public static void keysUsingActions()
+    {
+        By textField = By.id("target");
+        //SHIFT + "hisham" -> HISHAM
+        new Actions(driver).keyDown(byToWebElement(textField),Keys.SHIFT)
+                .sendKeys(byToWebElement(textField),"hisham")
+                .keyUp(Keys.SHIFT)
+                .build()
+                .perform();
+    }
+
+    public static void keyUsingSendKeys()
+    {
+        driver.findElement(By.id("target")).sendKeys(Keys.ARROW_DOWN);
+    }
+
+    public static void acceptAlert()
+    {
+        driver.findElement(By.cssSelector("[onclick = 'jsAlert()']")).click();
+        Alert alert = driver.switchTo().alert();
+        System.out.println(alert.getText());
+        alert.accept();
+    }
+
+    public static void dismissAlert()
+    {
+        driver.findElement(By.cssSelector("[onclick = 'jsConfirm()']")).click();
+        driver.switchTo().alert().dismiss();
+    }
+
+    public static void prompt()
+    {
+        driver.findElement(By.cssSelector("[onclick = 'jsPrompt()']")).click();
+        Alert alert = driver.switchTo().alert();
+        alert.sendKeys("Hisham");
+        alert.accept();
     }
 
     public static void nestedFrame()
