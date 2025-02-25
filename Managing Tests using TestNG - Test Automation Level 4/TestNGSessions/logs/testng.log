@@ -1,0 +1,10 @@
+[2025-02-25 02:31:37] [main] [INFO] SessionOne.ParameterClass - Test case Started
+[2025-02-25 02:31:37] [main] [INFO] SessionOne.ParameterClass - username:admin is written
+[2025-02-25 02:31:37] [main] [INFO] SessionOne.ParameterClass - password:admin is written
+[2025-02-25 02:31:37] [main] [INFO] SessionOne.ParameterClass - login button is clicked
+[2025-02-25 02:31:37] [main] [WARN] SessionOne.ParameterClass - value: true
+[2025-02-25 02:36:42] [main] [INFO] SessionOne.ParameterClass.validLoginTestCase2(ParameterClass.java:59) - Test case Started
+[2025-02-25 02:36:42] [main] [INFO] SessionOne.ParameterClass.validLoginTestCase2(ParameterClass.java:59) - username:admin is written
+[2025-02-25 02:36:42] [main] [INFO] SessionOne.ParameterClass.validLoginTestCase2(ParameterClass.java:59) - password:admin is written
+[2025-02-25 02:36:42] [main] [INFO] SessionOne.ParameterClass.validLoginTestCase2(ParameterClass.java:59) - login button is clicked
+[2025-02-25 02:36:42] [main] [WARN] SessionOne.ParameterClass.validLoginTestCase2(ParameterClass.java:59) - value: true
