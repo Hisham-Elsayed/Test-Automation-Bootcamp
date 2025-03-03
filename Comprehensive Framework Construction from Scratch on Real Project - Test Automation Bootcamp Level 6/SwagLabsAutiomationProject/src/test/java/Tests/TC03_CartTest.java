@@ -4,9 +4,9 @@ import Listeners.IInvokedMethodListenerClass;
 import Listeners.ITestListenerClass;
 import Pages.P01_LoginPage;
 import Pages.P02_LandingPage;
+import Pages.P03_CartPage;
 import Utilities.DataUtils;
 import Utilities.LogsUtils;
-import Utilities.Utility;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -20,15 +20,15 @@ import java.time.Duration;
 import static DriverFactory.DriverFactory.*;
 import static Utilities.DataUtils.getPropertyValue;
 
-@Listeners({IInvokedMethodListenerClass.class, ITestListenerClass.class})
-public class TC02_LandingTest {
 
+@Listeners({IInvokedMethodListenerClass.class, ITestListenerClass.class})
+public class TC03_CartTest {
     private final String USERNAME = DataUtils.getJsonData("validLogin", "username");
 
     private final String PASSWORD = DataUtils.getJsonData("validLogin", "password");
 
 
-    public TC02_LandingTest() throws FileNotFoundException {
+    public TC03_CartTest() throws FileNotFoundException {
     }
 
 
@@ -43,33 +43,15 @@ public class TC02_LandingTest {
     }
 
     @Test
-    public void checkingNumberOfSelectedProductsTC() {
-        new P01_LoginPage(getDriver())
+    public void comparingPricesTC() {
+        String totalPrice = new P01_LoginPage(getDriver())
                 .enterUsername(USERNAME)
                 .enterPassword(PASSWORD)
                 .clickOnLoginButton()
-                .addAllProductsToCart();
-        Assert.assertTrue(new P02_LandingPage(getDriver()).comparingNumberOfSelectedProductsWithCart());
-    }
-
-    @Test
-    public void addingRandomProductsToCartTC() {
-        new P01_LoginPage(getDriver())
-                .enterUsername(USERNAME)
-                .enterPassword(PASSWORD)
-                .clickOnLoginButton()
-                .addRandomProducts(3, 6);
-        Assert.assertTrue(new P02_LandingPage(getDriver()).comparingNumberOfSelectedProductsWithCart());
-    }
-
-    @Test
-    public void clickOnCartIcon() throws IOException {
-        new P01_LoginPage(getDriver())
-                .enterUsername(USERNAME)
-                .enterPassword(PASSWORD)
-                .clickOnLoginButton()
-                .clickOnCartIcon();
-        Assert.assertTrue(Utility.verifyURL(getDriver(), DataUtils.getPropertyValue("environment", "CART_URL")));
+                .addRandomProducts(2, 6)
+                .getTotalPriceOfSelectedProducts();
+        new P02_LandingPage(getDriver()).clickOnCartIcon();
+        Assert.assertTrue(new P03_CartPage(getDriver()).comparingPrices(totalPrice));
     }
 
     @AfterMethod

@@ -7,15 +7,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.Set;
 
 public class P02_LandingPage {
-
+    static float totalPrice = 0;
     private static List<WebElement> allProducts;
     private static List<WebElement> selectedProducts;
     private final WebDriver driver;
     private final By addToCartButtonForAllProducts = By.xpath("//button[@class]");
     private final By numberOfProductsOnCartIcon = By.className("shopping_cart_badge");
     private final By numberOfSelectedProducts = By.xpath("//button[.='Remove']");
+
+    private final By cartIcon = By.className("shopping_cart_link");
+    private final By pricesOfSelectedProductsLocator = By.xpath("//button[.=\"Remove\"] //preceding-sibling::div[@class='inventory_item_price']");
+
 
     public P02_LandingPage(WebDriver driver) {
         this.driver = driver;
@@ -46,6 +51,38 @@ public class P02_LandingPage {
             selectedProducts = driver.findElements(numberOfSelectedProducts);
             LogsUtils.info("selected products: " + (selectedProducts.size()));
             return String.valueOf(selectedProducts.size());
+        } catch (Exception e) {
+            LogsUtils.error(e.getMessage());
+            return "0";
+        }
+    }
+
+    public P02_LandingPage addRandomProducts(int numberOfProductsNeeded, int totalNumberOfProducts) {
+        Set<Integer> randomNumbers = Utility.generateUniqueNumber(numberOfProductsNeeded, totalNumberOfProducts);
+        for (int random : randomNumbers) {
+            LogsUtils.info("randomNumber " + random);
+            By addToCartButtonForAllProduct = By.xpath("(//button[@class])[" + random + "]");   //dynamic Locator
+            Utility.clickElement(driver, addToCartButtonForAllProduct);
+        }
+        return this;
+    }
+
+    public P03_CartPage clickOnCartIcon() {
+        Utility.clickElement(driver, cartIcon);
+        return new P03_CartPage(driver);
+    }
+
+
+    public String getTotalPriceOfSelectedProducts() {
+        try {
+            List<WebElement> pricesOfSelectedProducts = driver.findElements(pricesOfSelectedProductsLocator);
+            for (int i = 1; i <= pricesOfSelectedProducts.size(); i++) {
+                By elements = By.xpath("(//button[.=\"Remove\"] //preceding-sibling::div[@class='inventory_item_price'])[" + i + "]");
+                String fullText = Utility.getText(driver, elements);
+                totalPrice += Float.parseFloat(fullText.replace("$", ""));
+            }
+            LogsUtils.info("Total Price " + totalPrice);
+            return String.valueOf(totalPrice);
         } catch (Exception e) {
             LogsUtils.error(e.getMessage());
             return "0";

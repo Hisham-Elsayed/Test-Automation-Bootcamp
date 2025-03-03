@@ -41,3 +41,84 @@ Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVer
 Session ID: 1aec63121eae6d66611d3defe38eba6f
 [2025-02-27 23:12:25] [main] [INFO] Pages.P02_LandingPage.getNumberOfSelectedProducts(P02_LandingPage.java:47) - selected products: 0
 [2025-02-27 23:12:25] [main] [INFO] Listeners.IInvokedMethodListenerClass.afterInvocation(IInvokedMethodListenerClass.java:21) - Test Case checkingNumberOfSelectedProductsTC failed
+[2025-03-03 05:57:47] [main] [INFO] Tests.TC02_LandingTest.setup(TC02_LandingTest.java:37) - Edge driver is opened
+[2025-03-03 05:57:48] [main] [INFO] Tests.TC02_LandingTest.setup(TC02_LandingTest.java:39) - Page is redirected to the URL
+[2025-03-03 05:57:48] [main] [INFO] Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:9) - Test Case checkingNumberOfSelectedProductsTC Started
+[2025-03-03 05:57:49] [main] [INFO] Pages.P02_LandingPage.addAllProductsToCart(P02_LandingPage.java:27) - number of all products: 6
+[2025-03-03 05:57:55] [main] [ERROR] Pages.P02_LandingPage.getNumberOfProductsOnCartIcon(P02_LandingPage.java:40) - Expected condition failed: waiting for alert to be present (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.29.0', revision: '5fc1ec94cb'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 133.0.3065.92, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:51272}, msedge: {msedgedriverVersion: 133.0.3065.92 (e8591772eda3..., userDataDir: C:\Users\hisha\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51272/devtoo..., se:cdpVersion: 133.0.3065.92, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: c574b5ba16b2b60fb5de05ae309ea594
+[2025-03-03 05:58:05] [main] [INFO] Pages.P02_LandingPage.getNumberOfSelectedProducts(P02_LandingPage.java:48) - selected products: 0
+[2025-03-03 05:58:05] [main] [INFO] Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:13) - Test Case checkingNumberOfSelectedProductsTC Succeeded
+[2025-03-03 05:58:46] [main] [INFO] Tests.TC02_LandingTest.setup(TC02_LandingTest.java:37) - Edge driver is opened
+[2025-03-03 05:58:47] [main] [INFO] Tests.TC02_LandingTest.setup(TC02_LandingTest.java:39) - Page is redirected to the URL
+[2025-03-03 05:58:47] [main] [INFO] Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:9) - Test Case addingRandomProductsToCartTC Started
+[2025-03-03 05:58:48] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:59) - randomNumber 1
+[2025-03-03 05:58:49] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:59) - randomNumber 4
+[2025-03-03 05:58:49] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:59) - randomNumber 6
+[2025-03-03 05:58:54] [main] [ERROR] Pages.P02_LandingPage.getNumberOfProductsOnCartIcon(P02_LandingPage.java:40) - Expected condition failed: waiting for alert to be present (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: '4.29.0', revision: '5fc1ec94cb'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.6'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 133.0.3065.92, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:51378}, msedge: {msedgedriverVersion: 133.0.3065.92 (e8591772eda3..., userDataDir: C:\Users\hisha\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51378/devtoo..., se:cdpVersion: 133.0.3065.92, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9c530fbc8e3af6c8888c241d6bd5a6dc
+[2025-03-03 05:59:04] [main] [INFO] Pages.P02_LandingPage.getNumberOfSelectedProducts(P02_LandingPage.java:48) - selected products: 0
+[2025-03-03 05:59:04] [main] [INFO] Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:13) - Test Case addingRandomProductsToCartTC Succeeded
+[2025-03-03 06:09:58] [main] [INFO] Tests.TC02_LandingTest.setup(TC02_LandingTest.java:37) - Edge driver is opened
+[2025-03-03 06:09:58] [main] [INFO] Tests.TC02_LandingTest.setup(TC02_LandingTest.java:39) - Page is redirected to the URL
+[2025-03-03 06:09:59] [main] [INFO] Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:9) - Test Case clickOnCartIcon Started
+[2025-03-03 06:10:01] [main] [INFO] Listeners.IInvokedMethodListenerClass.afterInvocation(IInvokedMethodListenerClass.java:21) - Test Case clickOnCartIcon failed
+[2025-03-03 06:10:34] [main] [INFO] Tests.TC02_LandingTest.setup(TC02_LandingTest.java:37) - Edge driver is opened
+[2025-03-03 06:10:35] [main] [INFO] Tests.TC02_LandingTest.setup(TC02_LandingTest.java:39) - Page is redirected to the URL
+[2025-03-03 06:10:35] [main] [INFO] Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:9) - Test Case clickOnCartIcon Started
+[2025-03-03 06:10:36] [main] [INFO] Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:13) - Test Case clickOnCartIcon Succeeded
+[2025-03-03 22:55:08] [main] [INFO] Tests.TC03_CartTest.setup(TC03_CartTest.java:38) - Edge driver is opened
+[2025-03-03 22:55:09] [main] [INFO] Tests.TC03_CartTest.setup(TC03_CartTest.java:40) - Page is redirected to the URL
+[2025-03-03 22:55:09] [main] [INFO] Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:9) - Test Case comparingPricesTC Started
+[2025-03-03 22:55:10] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:66) - randomNumber 4
+[2025-03-03 22:55:11] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:66) - randomNumber 5
+[2025-03-03 22:55:31] [main] [INFO] Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:13) - Test Case comparingPricesTC Succeeded
+[2025-03-03 22:56:51] [main] [INFO] Tests.TC03_CartTest.setup(TC03_CartTest.java:38) - Edge driver is opened
+[2025-03-03 22:56:52] [main] [INFO] Tests.TC03_CartTest.setup(TC03_CartTest.java:40) - Page is redirected to the URL
+[2025-03-03 22:56:52] [main] [INFO] Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:9) - Test Case comparingPricesTC Started
+[2025-03-03 22:56:53] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:66) - randomNumber 1
+[2025-03-03 22:56:53] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:66) - randomNumber 2
+[2025-03-03 22:57:13] [main] [INFO] Pages.P03_CartPage.getTotalPrice(P03_CartPage.java:29) - Total Price 0.0
+[2025-03-03 22:57:13] [main] [INFO] Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:13) - Test Case comparingPricesTC Succeeded
+[2025-03-03 22:58:58] [main] [INFO] Tests.TC03_CartTest.setup(TC03_CartTest.java:38) - Edge driver is opened
+[2025-03-03 22:58:59] [main] [INFO] Tests.TC03_CartTest.setup(TC03_CartTest.java:40) - Page is redirected to the URL
+[2025-03-03 22:58:59] [main] [INFO] Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:9) - Test Case comparingPricesTC Started
+[2025-03-03 22:59:00] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:66) - randomNumber 1
+[2025-03-03 22:59:00] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:66) - randomNumber 2
+[2025-03-03 22:59:10] [main] [INFO] Pages.P02_LandingPage.getTotalPriceOfSelectedProducts(P02_LandingPage.java:96) - Total Price 0.0
+[2025-03-03 22:59:21] [main] [INFO] Pages.P03_CartPage.getTotalPrice(P03_CartPage.java:29) - Total Price 0.0
+[2025-03-03 22:59:21] [main] [INFO] Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:13) - Test Case comparingPricesTC Succeeded
+[2025-03-03 23:01:35] [main] [INFO] Tests.TC03_CartTest.setup(TC03_CartTest.java:38) - Edge driver is opened
+[2025-03-03 23:01:36] [main] [INFO] Tests.TC03_CartTest.setup(TC03_CartTest.java:40) - Page is redirected to the URL
+[2025-03-03 23:01:36] [main] [INFO] Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:9) - Test Case comparingPricesTC Started
+[2025-03-03 23:01:37] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:66) - randomNumber 1
+[2025-03-03 23:01:37] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:66) - randomNumber 4
+[2025-03-03 23:01:47] [main] [INFO] Pages.P02_LandingPage.getTotalPriceOfSelectedProducts(P02_LandingPage.java:95) - Total Price 0.0
+[2025-03-03 23:01:58] [main] [INFO] Pages.P03_CartPage.getTotalPrice(P03_CartPage.java:28) - Total Price 0.0
+[2025-03-03 23:01:58] [main] [INFO] Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:13) - Test Case comparingPricesTC Succeeded
+[2025-03-03 23:24:01] [main] [INFO] Tests.TC02_LandingTest.setup(TC02_LandingTest.java:38) - Edge driver is opened
+[2025-03-03 23:24:02] [main] [INFO] Tests.TC02_LandingTest.setup(TC02_LandingTest.java:40) - Page is redirected to the URL
+[2025-03-03 23:24:02] [main] [INFO] Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:9) - Test Case clickOnCartIcon Started
+[2025-03-03 23:24:04] [main] [INFO] Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:13) - Test Case clickOnCartIcon Succeeded
+[2025-03-03 23:39:00] [main] [INFO] Tests.TC03_CartTest.setup(TC03_CartTest.java:38) - Edge driver is opened
+[2025-03-03 23:39:00] [main] [INFO] Tests.TC03_CartTest.setup(TC03_CartTest.java:40) - Page is redirected to the URL
+[2025-03-03 23:39:01] [main] [INFO] Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:9) - Test Case comparingPricesTC Started
+[2025-03-03 23:39:02] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:63) - randomNumber 2
+[2025-03-03 23:39:02] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:63) - randomNumber 6
+[2025-03-03 23:39:12] [main] [INFO] Pages.P02_LandingPage.getTotalPriceOfSelectedProducts(P02_LandingPage.java:84) - Total Price 0.0
+[2025-03-03 23:39:22] [main] [INFO] Pages.P03_CartPage.getTotalPrice(P03_CartPage.java:30) - Total Price 0.0
+[2025-03-03 23:39:22] [main] [INFO] Listeners.ITestListenerClass.onTestSuccess(ITestListenerClass.java:13) - Test Case comparingPricesTC Succeeded
+[2025-03-03 23:47:30] [main] [INFO] Tests.TC04_CheckoutTest.setup(TC04_CheckoutTest.java:45) - Edge driver is opened
+[2025-03-03 23:47:31] [main] [INFO] Tests.TC04_CheckoutTest.setup(TC04_CheckoutTest.java:47) - Page is redirected to the URL
+[2025-03-03 23:47:31] [main] [INFO] Listeners.ITestListenerClass.onTestStart(ITestListenerClass.java:9) - Test Case checkoutStepOneTC Started
+[2025-03-03 23:47:32] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:63) - randomNumber 1
+[2025-03-03 23:47:32] [main] [INFO] Pages.P02_LandingPage.addRandomProducts(P02_LandingPage.java:63) - randomNumber 4
+[2025-03-03 23:47:43] [main] [INFO] Listeners.IInvokedMethodListenerClass.afterInvocation(IInvokedMethodListenerClass.java:21) - Test Case checkoutStepOneTC failed

@@ -4,9 +4,12 @@ import Listeners.IInvokedMethodListenerClass;
 import Listeners.ITestListenerClass;
 import Pages.P01_LoginPage;
 import Pages.P02_LandingPage;
+import Pages.P03_CartPage;
+import Pages.P04_CheckoutPage;
 import Utilities.DataUtils;
 import Utilities.LogsUtils;
 import Utilities.Utility;
+import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -20,15 +23,19 @@ import java.time.Duration;
 import static DriverFactory.DriverFactory.*;
 import static Utilities.DataUtils.getPropertyValue;
 
-@Listeners({IInvokedMethodListenerClass.class, ITestListenerClass.class})
-public class TC02_LandingTest {
 
+@Listeners({IInvokedMethodListenerClass.class, ITestListenerClass.class})
+public class TC04_CheckoutTest {
     private final String USERNAME = DataUtils.getJsonData("validLogin", "username");
 
     private final String PASSWORD = DataUtils.getJsonData("validLogin", "password");
 
+    private final String FIRSTNAME = DataUtils.getJsonData("information", "fName") + "-" + Utility.getTimeStamp();
+    private final String LASTNAME = DataUtils.getJsonData("information", "lName") + "-" + Utility.getTimeStamp();
 
-    public TC02_LandingTest() throws FileNotFoundException {
+    private final String ZIPCODE = new Faker().number().digits(5);
+
+    public TC04_CheckoutTest() throws FileNotFoundException {
     }
 
 
@@ -43,33 +50,22 @@ public class TC02_LandingTest {
     }
 
     @Test
-    public void checkingNumberOfSelectedProductsTC() {
+    public void checkoutStepOneTC() throws IOException {
+        //TODO:Login Steps
         new P01_LoginPage(getDriver())
                 .enterUsername(USERNAME)
                 .enterPassword(PASSWORD)
-                .clickOnLoginButton()
-                .addAllProductsToCart();
-        Assert.assertTrue(new P02_LandingPage(getDriver()).comparingNumberOfSelectedProductsWithCart());
-    }
-
-    @Test
-    public void addingRandomProductsToCartTC() {
-        new P01_LoginPage(getDriver())
-                .enterUsername(USERNAME)
-                .enterPassword(PASSWORD)
-                .clickOnLoginButton()
-                .addRandomProducts(3, 6);
-        Assert.assertTrue(new P02_LandingPage(getDriver()).comparingNumberOfSelectedProductsWithCart());
-    }
-
-    @Test
-    public void clickOnCartIcon() throws IOException {
-        new P01_LoginPage(getDriver())
-                .enterUsername(USERNAME)
-                .enterPassword(PASSWORD)
-                .clickOnLoginButton()
+                .clickOnLoginButton();
+        //TODO:Adding Products Steps
+        new P02_LandingPage(getDriver()).addRandomProducts(2, 6)
                 .clickOnCartIcon();
-        Assert.assertTrue(Utility.verifyURL(getDriver(), DataUtils.getPropertyValue("environment", "CART_URL")));
+        //TODO:Go to Checkout Page
+        new P03_CartPage(getDriver()).clickOnCheckoutButton();
+        //TODO:Filling Information Steps
+        new P04_CheckoutPage(getDriver()).fillingInformationForm(FIRSTNAME, LASTNAME, ZIPCODE)
+                .clickOnContinueButton();
+        LogsUtils.info(FIRSTNAME + " " + LASTNAME + " " + ZIPCODE);
+        Assert.assertTrue(Utility.verifyURL(getDriver(), getPropertyValue("environment", "CHECKOUT_URL")));
     }
 
     @AfterMethod
